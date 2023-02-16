@@ -9,7 +9,7 @@ module.exports = (app) => {
   async function findOrCreateStargazersIssue(context) {
     const OWNER = context.payload.repository.owner.login;
     const REPO = context.payload.repository.name;
-    const issues = context.octokit.issues.listForRepo({
+    const { data: issues } = await context.octokit.issues.listForRepo({
       repo: REPO,
       owner: OWNER,
       state: "open",
