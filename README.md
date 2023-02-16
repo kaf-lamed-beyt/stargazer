@@ -1,6 +1,6 @@
 # stargazer
 
-> A GitHub App built with [Probot](https://github.com/probot/probot) that get notified when someone stars your project
+Get notified when someone stars your project
 
 ## Setup
 
@@ -30,4 +30,4 @@ For more, check out the [Contributing Guide](CONTRIBUTING.md).
 
 ## License
 
-[ISC](LICENSE) © 2023 kaf-lamed-beyt
+[MIT](LICENSE) © 2023 kaf-lamed-beyt

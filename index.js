@@ -3,19 +3,55 @@
  * @param {import('probot').Probot} app
  */
 module.exports = (app) => {
-  // Your code here
-  app.log.info("Yay, the app was loaded!");
+  const LABEL = "stargazers";
+  let issueNumber;
 
-  app.on("issues.opened", async (context) => {
-    const issueComment = context.issue({
-      body: "Thanks for opening this issue!",
+  async function findOrCreateStargazersIssue(context) {
+    const OWNER = context.payload.repository.owner.login;
+    const REPO = context.payload.repository.name;
+    const issues = context.octokit.issues.listForRepo({
+      repo: REPO,
+      owner: OWNER,
+      state: "open",
     });
-    return context.octokit.issues.createComment(issueComment);
+
+    const stargazersIssue = issues.find((issue) =>
+      issue.labels.some((label) => label.name === LABEL)
+    );
+
+    if (stargazersIssue) {
+      return stargazersIssue.number;
+    } else {
+      const { data: issue } = await context.octokit.issues.create({
+        repo: REPO,
+        owner: OWNER,
+        body: "This issue tracks the stargazers and the runaway stargazers of this repo",
+        labels: [LABEL],
+      });
+      return issue.number;
+    }
+  }
+
+  app.on(["star.created", "star.deleted"], async (context) => {
+    issueNumber = await findOrCreateStargazersIssue(context);
+    const OWNER = context.payload.repository.owner.login;
+    const REPO = context.payload.repository.name;
+    const USER = context.octokit.users.getByUsername({
+      username: context.payload.sender.login,
+    });
+
+    const commentBody =
+      context.name === "star.created"
+        ? `Thank you so much for starring this repo, ${USER} :pray:, this means a lot!`
+        : `${USER} just unstarred this repository :cry: :cry:`;
+
+    await context.octokit.issues.createComment(
+      context.issue({
+        repo: REPO,
+        owner: OWNER,
+        body: commentBody,
+        issue_number: issueNumber,
+      })
+    );
   });
-
-  // For more information on building apps:
-  // https://probot.github.io/docs/
-
-  // To get your app running against GitHub, see:
-  // https://probot.github.io/docs/development/
 };
