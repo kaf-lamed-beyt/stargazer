@@ -1,5 +1,5 @@
-import { createNodeMiddleware, createProbot } from "probot";
-import { verifyAndReceive } from "@octokit/webhooks";
+const { createNodeMiddleware, createProbot } = require("probot");
+const { verifyAndReceive } = require("@octokit/webhooks");
 
 const app = require("../../../index");
 
