@@ -10,8 +10,6 @@ module.exports = (app) => {
     const OWNER = context.payload.repository.owner.login;
     const REPO = context.payload.repository.name;
 
-    const octokit = await context.octokit.auth();
-
     const { data: issues } = await context.octokit.issues.listForRepo({
       repo: REPO,
       owner: OWNER,
