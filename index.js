@@ -37,14 +37,19 @@ module.exports = (app) => {
     issueNumber = await findOrCreateStargazersIssue(context);
     const OWNER = context.payload.repository.owner.login;
     const REPO = context.payload.repository.name;
+    const STARGAZERS = context.payload.repository.stargazers_count;
     const USER = context.octokit.users.getByUsername({
       username: context.payload.sender.login,
     });
 
     const commentBody =
       context.name === "star.created"
-        ? `Thank you so much for starring this repo, ${USER} :pray:, this means a lot!`
-        : `${USER} just unstarred this repository :cry: :cry:`;
+        ? `Thank you so much for starring this repo, ${USER} :pray:, this means a lot! \n ${REPO} has ${
+            STARGAZERS > 1 ? `${STARGAZERS}s` : STARGAZERS
+          } now`
+        : `${USER} just unstarred this repository :cry: :cry: \n ${REPO} has ${
+            STARGAZERS > 1 ? `${STARGAZERS}s` : STARGAZERS
+          } now`;
 
     await context.octokit.issues.createComment(
       context.issue({
