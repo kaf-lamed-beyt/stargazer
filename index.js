@@ -33,7 +33,7 @@ module.exports = (app) => {
     }
   }
 
-  app.on(["star.created", "star.deleted"], async (context) => {
+  app.on(["issue_comment.created", "issue_comment.edited"], async (context) => {
     issueNumber = await findOrCreateStargazersIssue(context);
     const OWNER = context.payload.repository.owner.login;
     const REPO = context.payload.repository.name;
@@ -43,7 +43,7 @@ module.exports = (app) => {
     });
 
     const commentBody =
-      context.name === "watch.started"
+      context.name === "issue_comment.created"
         ? `Thank you so much for starring this repo, ${USER} :pray:, this means a lot! \n ${REPO} has ${
             STARGAZERS > 1 ? `${STARGAZERS}s` : STARGAZERS
           } now`
