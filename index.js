@@ -35,29 +35,30 @@ module.exports = (app) => {
 
   app.on(["star.created", "star.deleted"], async (context) => {
     issueNumber = await findOrCreateStargazersIssue(context);
-    const OWNER = context.payload.repository.owner.login;
-    const REPO = context.payload.repository.name;
-    const STARGAZERS = context.payload.repository.stargazers_count;
-    const USER = context.octokit.users.getByUsername({
-      username: context.payload.sender.login,
-    });
+    // const OWNER = context.payload.repository.owner.login;
+    // const REPO = context.payload.repository.name;
+    // const STARGAZERS = context.payload.repository.stargazers_count;
+    // const USER = context.octokit.users.getByUsername({
+    //   username: context.payload.sender.login,
+    // });
 
-    const commentBody =
-      context.name === "star.created"
-        ? `Thank you so much for starring this repo, ${USER} :pray:, this means a lot! \n ${REPO} has ${
-            STARGAZERS > 1 ? `${STARGAZERS}s` : STARGAZERS
-          } now`
-        : `${USER} just unstarred this repository :cry: :cry: \n ${REPO} has ${
-            STARGAZERS > 1 ? `${STARGAZERS}s` : STARGAZERS
-          } now`;
+    // const commentBody =
+    //   context.name === "star.created"
+    //     ? `Thank you so much for starring this repo, ${USER} :pray:, this means a lot! \n ${REPO} has ${
+    //         STARGAZERS > 1 ? `${STARGAZERS}s` : STARGAZERS
+    //       } now`
+    //     : `${USER} just unstarred this repository :cry: :cry: \n ${REPO} has ${
+    //         STARGAZERS > 1 ? `${STARGAZERS}s` : STARGAZERS
+    //       } now`;
 
-    await context.octokit.issues.createComment(
-      context.issue({
-        repo: REPO,
-        owner: OWNER,
-        body: commentBody,
-        issue_number: issueNumber,
-      })
-    );
+    // await context.octokit.issues.createComment(
+    //   context.issue({
+    //     repo: REPO,
+    //     owner: OWNER,
+    //     body: commentBody,
+    //     issue_number: issueNumber,
+    //   })
+    // );
+    app.log(issueNumber);
   });
 };
