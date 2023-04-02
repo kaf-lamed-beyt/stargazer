@@ -48,10 +48,10 @@ module.exports = (app) => {
     const commentBody =
       context.name === "star" && context.payload.action === "created"
         ? `Thank you so much for starring this repo, @${USER} :pray:, this means a lot! \n\n ${REPO} has ${
-            STARGAZERS > 1 ? `${STARGAZERS}s` : STARGAZERS
+            STARGAZERS > 1 ? `${STARGAZERS} stars` : `${STARGAZERS} star`
           } now`
         : `@${USER} just unstarred this repository :sob: :sob: \n\n ${REPO} has ${
-            STARGAZERS > 1 ? `${STARGAZERS}s` : STARGAZERS
+            STARGAZERS > 1 ? `${STARGAZERS} stars` : `${STARGAZERS} star`
           } now`;
 
     return context.octokit.issues.createComment({
