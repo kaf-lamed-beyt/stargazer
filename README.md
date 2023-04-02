@@ -1,6 +1,8 @@
 # stargazer
 
-Get notified when someone stars your project
+Get notified when someone stars &mdash; or **un-stars** &mdash; your project
+
+Install the bot by clicking this [link](https://github.com/apps/starzbot)
 
 ## Setup
 
