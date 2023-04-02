@@ -4,8 +4,8 @@
   "private": true,
   "description": "get notified when someone stars your project",
   "author": "kaf-lamed-beyt",
-  "license": "ISC",
-  "homepage": "https://github.com//",
+  "license": "MIT",
+  "homepage": "https://github.com/kaf-lamed-beyt/stargazer",
   "keywords": [
     "probot",
     "github",
@@ -16,14 +16,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "@octokit/webhooks": "^10.7.0",
-    "@probot/adapter-aws-lambda-serverless": "^3.0.2",
-    "probot": "^12.2.4"
+    "probot": "^12.2.7"
   },
   "devDependencies": {
-    "jest": "^29.0.0",
-    "nock": "^13.0.5",
-    "smee-client": "^1.2.2"
+    "nock": "^13.2.9",
+    "smee-client": "^1.2.3"
   },
   "engines": {
     "node": ">= 10.13.0"
