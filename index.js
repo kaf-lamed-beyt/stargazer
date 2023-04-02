@@ -33,7 +33,7 @@ module.exports = (app) => {
     }
   }
 
-  app.on("watch.started", async (context) => {
+  app.on(["star.created", "star.deleted"], async (context) => {
     issueNumber = await findOrCreateStargazersIssue(context);
     const OWNER = context.payload.repository.owner.login;
     const REPO = context.payload.repository.name;
