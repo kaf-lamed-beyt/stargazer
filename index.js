@@ -2,8 +2,6 @@
  * @param {import('probot').Probot} app
  */
 module.exports = (app) => {
-  app.log("Yay! The app was loaded!");
-
   async function findOrCreateStargazersIssue(context) {
     const OWNER = context.payload.repository.owner.login;
     const REPO = context.payload.repository.name;
@@ -51,7 +49,7 @@ module.exports = (app) => {
 
     const unsubscribe = `PS: don't forget to unsubscribe from this thread. \n If you don't &mdash; whenever anyone stars this repo, you'll get a mail, notifying you, because you were mentioned previously.`;
 
-    let responsesForWhenAStarIsAdded = [
+    const responsesForWhenAStarIsAdded = [
       {
         message: `Thank you so much for starring this repo, @${USER} :pray:, this means a lot! \n\n ${totalStars} \n\n ${unsubscribe}`,
       },
@@ -72,7 +70,7 @@ module.exports = (app) => {
       },
     ];
 
-    let responsesForWhenAStarIsRemoved = [
+    const responsesForWhenAStarIsRemoved = [
       {
         message: `We're sad to see you go, @${USER}. Thanks for your support while you were here! :cry: \n\n ${totalStars} \n\n ${unsubscribe}`,
       },
@@ -105,11 +103,15 @@ module.exports = (app) => {
         ? responsesForWhenAStarIsAdded[randomIsStarred].message
         : responsesForWhenAStarIsRemoved[randomIsStarRemoved].message;
 
-    return context.octokit.issues.createComment({
+    await context.octokit.issues.createComment({
       owner: OWNER,
       repo: REPO,
       issue_number: issueNumber,
       body: commentBody,
+    });
+
+    return context.octokit.activity.deleteThreadSubscription({
+      thread_id: issueNumber,
     });
   });
 };
