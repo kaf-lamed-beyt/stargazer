@@ -51,43 +51,43 @@ module.exports = (app) => {
 
     const responsesForWhenAStarIsAdded = [
       {
-        message: `Thank you so much for starring this repo, @${USER} :pray:, this means a lot! \n\n ${totalStars} \n\n ${unsubscribe}`,
+        message: `Thank you so much for starring this repo, @${USER} :pray:, this means a lot! \n\n ${totalStars} \n\n`,
       },
       {
-        message: `Wow! Thanks for the star, @${USER}! :star2: \n\n ${totalStars} \n\n ${unsubscribe}`,
+        message: `Wow! Thanks for the star, @${USER}! :star2: \n\n ${totalStars} \n\n`,
       },
       {
-        message: `Thank you for showing your support by starring this repository, @${USER}! :raised_hands: \n\n ${totalStars} \n\n ${unsubscribe}`,
+        message: `Thank you for showing your support by starring this repository, @${USER}! :raised_hands: \n\n ${totalStars} \n\n`,
       },
       {
-        message: `We appreciate your interest in this repository, @${USER}! Thank you for the star! :star: \n\n ${totalStars} \n\n ${unsubscribe}`,
+        message: `We appreciate your interest in this repository, @${USER}! Thank you for the star! :star: \n\n ${totalStars} \n\n`,
       },
       {
-        message: `Thanks for the star, @${USER}! It means a lot to us! :pray: \n\n ${totalStars} \n\n ${unsubscribe}`,
+        message: `Thanks for the star, @${USER}! It means a lot to us! :pray: \n\n ${totalStars} \n\n`,
       },
       {
-        message: `You just made our day, @${USER}! Thanks for the star! :heart_eyes: \n\n ${totalStars} \n\n ${unsubscribe}`,
+        message: `You just made our day, @${USER}! Thanks for the star! :heart_eyes: \n\n ${totalStars} \n\n`,
       },
     ];
 
     const responsesForWhenAStarIsRemoved = [
       {
-        message: `We're sad to see you go, @${USER}. Thanks for your support while you were here! :cry: \n\n ${totalStars} \n\n ${unsubscribe}`,
+        message: `We're sad to see you go, @${USER}. Thanks for your support while you were here! :cry: \n\n ${totalStars} \n\n`,
       },
       {
-        message: `Thanks for your interest in this repository, @${USER}. We hope you'll come back soon! :wave: \n\n ${totalStars} \n\n ${unsubscribe}`,
+        message: `Thanks for your interest in this repository, @${USER}. We hope you'll come back soon! :wave: \n\n ${totalStars} \n\n`,
       },
       {
-        message: `Sorry to see you unstar the repository, @${USER}. We appreciate your support! :pray: \n\n ${totalStars} \n\n ${unsubscribe}`,
+        message: `Sorry to see you unstar the repository, @${USER}. We appreciate your support! :pray: \n\n ${totalStars} \n\n`,
       },
       {
-        message: `Thanks for the time you spent with us, @${USER}. We hope to see you again soon! :smile: \n\n ${totalStars} \n\n ${unsubscribe}`,
+        message: `Thanks for the time you spent with us, @${USER}. We hope to see you again soon! :smile: \n\n ${totalStars} \n\n`,
       },
       {
-        message: `We'll miss you, @${USER}! Thanks for your support while you were here! :sob: \n\n ${totalStars} \n\n ${unsubscribe}`,
+        message: `We'll miss you, @${USER}! Thanks for your support while you were here! :sob: \n\n ${totalStars} \n\n`,
       },
       {
-        message: `@${USER} just unstarred this repository :sob: :sob: \n\n ${totalStars} \n\n ${unsubscribe}`,
+        message: `@${USER} just unstarred this repository :sob: :sob: \n\n ${totalStars} \n\n`,
       },
     ];
 
