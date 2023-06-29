@@ -1,3 +1,6 @@
+[![Made in Nigeria](https://img.shields.io/badge/made%20in-nigeria-008751.svg?style=flat-square)](https://github.com/acekyd/made-in-nigeria) ![issues](https://img.shields.io/github/issues/kaf-lamed-beyt/stargazer) ![forks](https://img.shields.io/github/forks/kaf-lamed-beyt/stargazer) ![stars](https://img.shields.io/github/stars/kaf-lamed-beyt/stargazer) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg) ![license](https://img.shields.io/github/license/kaf-lamed-beyt/stargazer) 
+
+
 # stargazer
 
 Get notified when someone stars &mdash; or **un-stars** &mdash; your project
